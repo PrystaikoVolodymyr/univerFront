@@ -61,6 +61,11 @@ window.onload = function() {
 
         document.forms['form-auth'].addEventListener('submit', async function(e) {
             e.preventDefault();
+            let loader = document.getElementById('loader')
+            let loader_inner = document.getElementById('loader_inner')
+
+            loader.style.display = 'block'
+
 
             const answerContainer = this.querySelector('.auth-form__answer'),
                 email = this.elements.email.value,
