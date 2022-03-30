@@ -78,7 +78,7 @@ window.onload = function() {
             if (signIn.status === 201) {
                 answerContainer.innerHTML = '<span class="text-success">you\'ve been logged successfully</span>';
                 localStorage.setItem("email", email);
-                window.location.href = "./verify.html";
+                window.location.href = "../two-factor-verify/verify.html";
             } else {
                 placeholders.forEach(function(placeholder) {
                     placeholder.classList.remove('focus');

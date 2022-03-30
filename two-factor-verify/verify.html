@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="./signin.css">
+    <link rel="stylesheet" href="../sign-in/signin.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
@@ -17,22 +17,18 @@
         <form class="auth-form" name="form-auth" method="post">
 
             <label class="auth-form__label">
-                <span class="auth-form__placeholder">email</span>
-                <input class="auth-form__input input-email" type="email" name="email" autocomplete="off" required>
+                <span class="auth-form__placeholder">Email</span>
+                <input class="auth-form__input input-email" id="email" name="email" autocomplete="off" required>
             </label>
 
             <label class="auth-form__label">
-                <span class="auth-form__placeholder">password</span>
-                <input class="auth-form__input input-password" type="password" name="password" autocomlete="off" required>
-                <div class="auth-form__toggler">
-                    <i class="la la-eye auth-form__icon"></i>
-                    <input type="checkbox" class="auth-form__checkbox password-toggler">
-                </div>
+                <span class="auth-form__placeholder">Code</span>
+                <input class="auth-form__input input-password" id="code" name="code" autocomlete="off" required>
             </label>
 
             <div class="auth-form__answer"></div>
 
-            <input class="auth-form__submit" type="submit" value="Login">
+            <input class="auth-form__submit" type="submit" value="Verify">
 
             <div class="auth-form__bottom">
                 <span>Have no account?</span>
@@ -43,11 +39,9 @@
     </div>
 </div>
 
-<div  style="display: none" class="loader" id="loader">
-    <div class="loader_inner" id="loader_inner"></div>
-</div>
+<div class="hint"></div>
 
-<script src="./signin.js"></script>
+<script src="veryfy.js"></script>
 </body>
 </html>
 
