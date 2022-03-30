@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="icon" href="../1.png" type="image/x-icon">
-    <link rel="stylesheet" href="signin.css">
+    <link rel="stylesheet" href="signup.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
@@ -23,6 +23,17 @@
             </label>
 
             <label class="auth-form__label">
+                <span class="auth-form__placeholder">phone</span>
+                <input class="auth-form__input input-email" type="phone" name="phone" autocomplete="off" required>
+            </label>
+
+            <label class="auth-form__label">
+                <span class="auth-form__placeholder">name</span>
+                <input class="auth-form__input input-email" type="name" name="name" autocomplete="off" required>
+            </label>
+
+
+            <label class="auth-form__label">
                 <span class="auth-form__placeholder">password</span>
                 <input class="auth-form__input input-password" type="password" name="password" autocomlete="off" required>
                 <div class="auth-form__toggler">
@@ -36,8 +47,8 @@
             <input class="auth-form__submit" type="submit" value="Login">
 
             <div class="auth-form__bottom">
-                <span>Have no account?</span>
-                <a href="../sign-up/signup.html">Create new</a>
+                <span>Already have an account?</span>
+                <a href="../sign-in/signin.html">Log In</a>
             </div>
         </form>
 
@@ -48,7 +59,7 @@
     <div class="loader_inner" id="loader_inner"></div>
 </div>
 
-<script src="signin.js"></script>
+<script src="signup.js"></script>
 </body>
 </html>
 

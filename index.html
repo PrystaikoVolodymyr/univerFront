@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="1.png" type="image/x-icon">
+
+</head>
+<body style="background: none repeat scroll 0 0 #232323">
+<div style="display: flex; justify-content: space-around">
+    <div class="slider-content" style="margin-top: 10%">
+        <h1 class="title">Web-sites security</h1>
+        <p class="text">On this site I developed protection in different ways. Please sing up or sign in to start</p>
+        <ul class="slider-btn rounded-buttons" style="display: flex; justify-content: space-around">
+            <a class="main-btn" href="./sign-in/signin.html"><li>SIGN IN</li></a>
+            <a class="main-btn" href="./sign-up/signup.html"><li>SIGN UP</li></a>
+        </ul>
+    </div>
+    <div class="slider-image" style="margin-top: 10%">
+        <img  style="width: 400px" src="1.png" alt="Hero">
+    </div>
+</div>
+<script>
+    let btn = document.querySelectorAll('li')
+    btn.forEach(el => {
+        el.addEventListener('mouseover', function () {
+            el.style.background = 'white'
+        })
+        el.addEventListener('mouseleave', function () {
+            el.style.background = '#05a8f0'
+        })
+    })
+</script>
+</body>
+</html>
