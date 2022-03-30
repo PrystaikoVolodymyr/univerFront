@@ -1,9 +1,9 @@
-const signin = async function (email, password) {
+const verify = async function (email, code) {
     try {
-        const response = await axios.post(`http://localhost:5000/auth/sing-in`,
+        const response = await axios.post(`http://localhost:5000/auth/two-factor-authenticate`,
             {
                 email: email,
-                password: password
+                code: code
             });
         return response
         // console.log(response.data);
@@ -16,6 +16,12 @@ const signin = async function (email, password) {
 window.onload = function() {
     (function() {
         const inputText = document.querySelectorAll('.auth-form__input');
+        const emailInput = document.getElementById('email')
+
+        emailInput.classList.add('focus');
+        emailInput.parentElement.querySelector('.auth-form__placeholder').classList.add('focus');
+        emailInput.value = localStorage.getItem("email");
+
 
         inputText.forEach( function(input) {
             input.addEventListener('focus', function() {
@@ -64,16 +70,15 @@ window.onload = function() {
 
             const answerContainer = this.querySelector('.auth-form__answer'),
                 email = this.elements.email.value,
-                password = this.elements.password.value;
+                code = this.elements.code.value;
 
             const placeholders = document.querySelectorAll('.auth-form__placeholder');
-            const signIn = await signin(email, password);
+            const signIn = await verify(email, code);
 
             console.log(signIn)
             if (signIn.status === 201) {
                 answerContainer.innerHTML = '<span class="text-success">you\'ve been logged successfully</span>';
-                localStorage.setItem("email", email);
-                window.location.href = "./verify.html";
+                // window.location.href = "./verify.html";
             } else {
                 placeholders.forEach(function(placeholder) {
                     placeholder.classList.remove('focus');
