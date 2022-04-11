@@ -74,10 +74,11 @@ window.onload = function() {
             const placeholders = document.querySelectorAll('.auth-form__placeholder');
             const signIn = await signin(email, password);
 
-            console.log(signIn)
             if (signIn.status === 201) {
                 answerContainer.innerHTML = '<span class="text-success">you\'ve been logged successfully</span>';
                 localStorage.setItem("email", email);
+                localStorage.setItem("token", signIn.data.token);
+
                 window.location.href = "../two-factor-verify/verify.html";
             } else {
                 placeholders.forEach(function(placeholder) {

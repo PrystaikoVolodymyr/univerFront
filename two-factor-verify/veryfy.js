@@ -1,15 +1,16 @@
-const verify = async function (email, code) {
+const verify = async function (token, code) {
     try {
-        const response = await axios.post(`http://localhost:5000/auth/two-factor-authenticate`,
+        return await axios.post(`http://localhost:5000/auth/two-factor-authenticate`,
             {
-                email: email,
                 code: code
-            });
-        return response
-        // console.log(response.data);
+            },
+            {
+                headers: {
+                    'token': token
+                }
+            })
     } catch (e) {
         return e.response
-        // console.log(e.response.data)
     }
 
 }
@@ -21,6 +22,8 @@ window.onload = function() {
         emailInput.classList.add('focus');
         emailInput.parentElement.querySelector('.auth-form__placeholder').classList.add('focus');
         emailInput.value = localStorage.getItem("email");
+        let header = new Headers()
+        header.append('Authorization', 'token');
 
 
         inputText.forEach( function(input) {
@@ -69,16 +72,16 @@ window.onload = function() {
             e.preventDefault();
 
             const answerContainer = this.querySelector('.auth-form__answer'),
-                email = this.elements.email.value,
                 code = this.elements.code.value;
 
-            const placeholders = document.querySelectorAll('.auth-form__placeholder');
-            const signIn = await verify(email, code);
+             let token = localStorage.getItem("token");
 
-            console.log(signIn)
-            if (signIn.status === 201) {
+            const placeholders = document.querySelectorAll('.auth-form__placeholder');
+            const verifyResult = await verify(token, code);
+
+            if (verifyResult.status === 201) {
                 answerContainer.innerHTML = '<span class="text-success">you\'ve been logged successfully</span>';
-                // window.location.href = "./verify.html";
+                localStorage.setItem("tokens",JSON.stringify(verifyResult.data.tokens));
             } else {
                 placeholders.forEach(function(placeholder) {
                     placeholder.classList.remove('focus');
