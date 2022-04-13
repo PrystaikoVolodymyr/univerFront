@@ -82,6 +82,8 @@ window.onload = function() {
             if (verifyResult.status === 201) {
                 answerContainer.innerHTML = '<span class="text-success">you\'ve been logged successfully</span>';
                 localStorage.setItem("tokens",JSON.stringify(verifyResult.data.tokens));
+                window.location.href = "../list/list.html";
+
             } else {
                 placeholders.forEach(function(placeholder) {
                     placeholder.classList.remove('focus');
