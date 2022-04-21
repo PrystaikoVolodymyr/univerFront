@@ -14,7 +14,7 @@ async function getUsers(name, surname, tokens) {
     } catch (e) {
         return e.response
     }
-};
+}
 
 async function checkRefreshToken(tokens) {
     try {
@@ -30,6 +30,7 @@ async function checkRefreshToken(tokens) {
 
 const name = document.getElementById('myInput')
 const surname = document.getElementById('myInput2')
+
 name.addEventListener('input', async function search() {
     const tokens = localStorage.getItem("tokens");
     const response =  await getUsers(name.value, surname.value, tokens)
@@ -41,6 +42,8 @@ name.addEventListener('input', async function search() {
             const li = document.createElement('li')
             li.innerText = user.name + '  ' + user.surname
             li.addEventListener('click', function () {
+                localStorage.setItem('recipientId', user._id)
+                window.location.href = "../friendsList/friendsList.html";
                 console.log(user)
             })
             list.appendChild(li)
@@ -69,6 +72,8 @@ surname.addEventListener('input', async function search() {
             const li = document.createElement('li')
             li.innerText = user.name + '  ' + user.surname
             li.addEventListener('click', function () {
+                localStorage.setItem('recipientId', user._id)
+                window.location.href = "../friendsList/friendsList.html";
                 console.log(user)
             })
             list.appendChild(li)
@@ -83,5 +88,7 @@ surname.addEventListener('input', async function search() {
         }
     }
 })
+
+
 
 
