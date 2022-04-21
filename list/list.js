@@ -29,7 +29,7 @@ async function checkRefreshToken(tokens) {
 }
 
 const name = document.getElementById('myInput')
-const surname = document.getElementById('myInput2')
+let surname = document.getElementById('myInput2')
 
 name.addEventListener('input', async function search() {
     const tokens = localStorage.getItem("tokens");

@@ -1,15 +1,16 @@
-const signup = async function (email, password) {
+const signup = async function (email, password, name, surname, phone) {
     try {
-        const response = await axios.post(`http://localhost:5000/auth/sing-in`,
+        return await axios.post(`http://localhost:5000/auth/sing-up`,
             {
                 email: email,
-                password: password
-            });
-        return response
-        // console.log(response.data);
+                password: password,
+                name: name,
+                phone: phone,
+                surname: surname
+            })
     } catch (e) {
+        console.log(e)
         return e.response
-        // console.log(e.response.data)
     }
 
 }
@@ -69,23 +70,25 @@ window.onload = function() {
 
             const answerContainer = this.querySelector('.auth-form__answer'),
                 email = this.elements.email.value,
-                password = this.elements.password.value;
+                password = this.elements.password.value,
+                name = this.elements.name.value,
+                surname = this.elements.surname.value,
+                phone = this.elements.phone.value;
 
-            const placeholders = document.querySelectorAll('.auth-form__placeholder');
-            const signIn = await signup(email, password);
+            console.log(email)
+            console.log(password)
+            console.log(name)
+            console.log(surname)
+            console.log(phone)
 
-            console.log(signIn)
-            if (signIn.status === 201) {
-                answerContainer.innerHTML = '<span class="text-success">you\'ve been logged successfully</span>';
-                localStorage.setItem("email", email);
-                window.location.href = "../two-factor-verify/verify.html";
+            const signUp = await signup(email, password, name, surname, phone);
+
+            console.log(signUp)
+            if (signUp.status === 201) {
+                window.location.href = "../sign-in/signin.html";
             } else {
-                placeholders.forEach(function(placeholder) {
-                    placeholder.classList.remove('focus');
-                });
-                this.elements.email.value = '';
-                this.elements.password.value = '';
-                answerContainer.innerHTML = '<span class="text-danger">invalid email or password</span>';
+                console.log(signUp)
+                location.reload()
             }
         });
     })();
